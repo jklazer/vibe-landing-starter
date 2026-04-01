@@ -15,8 +15,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: vibelanding
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"  # Uncomment for local development
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
