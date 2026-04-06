@@ -4,28 +4,28 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Do I need coding experience?",
-    a: "Not at all! This starter is built for product managers, marketers, and founders who want to ship fast using vibe coding — just describe what you want and AI builds it.",
+    q: "Нужен ли опыт в программировании?",
+    a: "Совсем нет! Этот стартер создан для продакт-менеджеров, маркетологов и фаундеров, которые хотят быстро запускать продукты с помощью вайбкодинга — просто опишите, что вам нужно, и AI построит это.",
   },
   {
-    q: "What tech stack is this built on?",
-    a: "Next.js 14 (React), Tailwind CSS for styling, Prisma ORM with PostgreSQL for the database, and Docker for deployment. Everything is TypeScript.",
+    q: "На каком стеке это построено?",
+    a: "Next.js 14 (React), Tailwind CSS для стилей, Prisma ORM с PostgreSQL для базы данных и Docker для деплоя. Всё на TypeScript.",
   },
   {
-    q: "How does lead capture work?",
-    a: "When a visitor submits the form, their data is saved to PostgreSQL via Prisma, a lead_created event is logged, and you get an instant Telegram notification.",
+    q: "Как работает сбор заявок?",
+    a: "Когда посетитель отправляет форму, его данные сохраняются в PostgreSQL через Prisma, логируется событие lead_created, и вы мгновенно получаете уведомление в Telegram.",
   },
   {
-    q: "What is the webhook inbox for?",
-    a: "It's a secure endpoint that accepts events from external services (payment providers, CRMs, etc.). It has built-in idempotency so duplicate deliveries won't create duplicate records.",
+    q: "Для чего нужен webhook-приёмник?",
+    a: "Это защищённый эндпоинт, который принимает события от внешних сервисов (платёжные системы, CRM и т.д.). Встроенная идемпотентность гарантирует, что повторные доставки не создадут дублей.",
   },
   {
-    q: "Can I deploy this anywhere?",
-    a: "Yes! Use docker-compose on any VPS, or deploy to Vercel with a managed Postgres (like Supabase or Neon). The README covers both options.",
+    q: "Можно ли задеплоить куда угодно?",
+    a: "Да! Используйте docker-compose на любом VPS или задеплойте на Vercel с управляемым Postgres (например, Supabase или Neon). В README описаны оба варианта.",
   },
   {
-    q: "Is it free?",
-    a: "Completely free and open source. Use it for your projects, modify it, learn from it.",
+    q: "Это бесплатно?",
+    a: "Полностью бесплатно и с открытым исходным кодом. Используйте для своих проектов, модифицируйте, учитесь.",
   },
 ];
 
@@ -37,10 +37,10 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Frequently Asked Questions
+            Частые вопросы
           </h2>
           <p className="text-lg text-gray-500">
-            Everything you need to know before getting started.
+            Всё, что нужно знать перед началом работы.
           </p>
         </div>
 

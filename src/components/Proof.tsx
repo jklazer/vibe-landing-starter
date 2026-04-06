@@ -1,8 +1,8 @@
 const stats = [
-  { value: "2,500+", label: "Landings deployed" },
-  { value: "98%", label: "Uptime SLA" },
-  { value: "4.9/5", label: "Developer rating" },
-  { value: "<3 min", label: "Avg. deploy time" },
+  { value: "2 500+", label: "Лендингов запущено" },
+  { value: "98%", label: "Аптайм SLA" },
+  { value: "4.9/5", label: "Оценка разработчиков" },
+  { value: "<3 мин", label: "Среднее время деплоя" },
 ];
 
 const logos = [
@@ -15,7 +15,7 @@ export default function Proof() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Trusted by */}
         <p className="text-center text-sm text-gray-400 uppercase tracking-widest mb-8">
-          Trusted by teams at
+          Нам доверяют команды из
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8 mb-16">
           {logos.map((name) => (
@@ -43,11 +43,11 @@ export default function Proof() {
         {/* Testimonial */}
         <blockquote className="mt-16 max-w-3xl mx-auto text-center">
           <p className="text-xl md:text-2xl text-gray-700 italic leading-relaxed">
-            &ldquo;We shipped our MVP landing in under an hour. The built-in analytics
-            and Telegram alerts saved us weeks of setup.&rdquo;
+            &ldquo;Мы запустили MVP-лендинг меньше чем за час. Встроенная аналитика
+            и Telegram-оповещения сэкономили нам недели настройки.&rdquo;
           </p>
           <footer className="mt-6 text-sm text-gray-500">
-            <strong className="text-gray-700">Alex Chen</strong> &mdash; CTO, LaunchPad
+            <strong className="text-gray-700">Алексей Петров</strong> &mdash; CTO, LaunchPad
           </footer>
         </blockquote>
       </div>

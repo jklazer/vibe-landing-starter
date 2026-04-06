@@ -19,7 +19,7 @@ export default function Home() {
         <CTA />
       </main>
       <footer className="bg-gray-900 text-gray-400 text-center py-8 text-sm">
-        &copy; {new Date().getFullYear()} VibeLanding Starter
+        &copy; {new Date().getFullYear()} VibeLanding Стартер
       </footer>
     </>
   );

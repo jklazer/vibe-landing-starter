@@ -5,8 +5,8 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    title: "Ship in Minutes",
-    desc: "Pre-built sections, Prisma ORM, and Docker deploy. From idea to live URL in one session.",
+    title: "Запуск за минуты",
+    desc: "Готовые секции, Prisma ORM и деплой через Docker. От идеи до рабочего URL за одну сессию.",
   },
   {
     icon: (
@@ -14,8 +14,8 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
-    title: "Built-in Analytics",
-    desc: "Track landing_view, cta_click, and lead_created events. All data in your own Postgres.",
+    title: "Встроенная аналитика",
+    desc: "Отслеживайте события landing_view, cta_click и lead_created. Все данные в вашем Postgres.",
   },
   {
     icon: (
@@ -23,8 +23,8 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
       </svg>
     ),
-    title: "Instant TG Alerts",
-    desc: "Get a Telegram message the moment a new lead comes in. Never miss a conversion.",
+    title: "Мгновенные TG-оповещения",
+    desc: "Получайте сообщение в Telegram в момент новой заявки. Ни один лид не потеряется.",
   },
   {
     icon: (
@@ -32,8 +32,8 @@ const benefits = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
       </svg>
     ),
-    title: "Webhook Inbox",
-    desc: "Accept external events via a secure endpoint with built-in idempotency protection.",
+    title: "Webhook-приёмник",
+    desc: "Принимайте внешние события через защищённый эндпоинт со встроенной идемпотентностью.",
   },
   {
     icon: (
@@ -42,7 +42,7 @@ const benefits = [
       </svg>
     ),
     title: "Postgres + Prisma",
-    desc: "Type-safe database access, auto-migrations, and a visual studio for your data.",
+    desc: "Типобезопасный доступ к базе данных, автомиграции и визуальный браузер данных.",
   },
   {
     icon: (
@@ -51,7 +51,7 @@ const benefits = [
       </svg>
     ),
     title: "Docker Ready",
-    desc: "One command to deploy. docker-compose up and you're live with a persistent database.",
+    desc: "Одна команда для деплоя. docker-compose up — и у вас рабочий сайт с базой данных.",
   },
 ];
 
@@ -61,13 +61,13 @@ export default function Benefits() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Everything You Need to{" "}
+            Всё, что нужно для{" "}
             <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
-              Convert
+              конверсии
             </span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            A complete landing page toolkit, from lead capture to deployment.
+            Полный набор инструментов для лендинга: от сбора заявок до деплоя.
           </p>
         </div>
 

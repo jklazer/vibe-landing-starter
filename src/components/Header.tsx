@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 const links = [
-  { href: "#proof", label: "Social Proof" },
-  { href: "#benefits", label: "Benefits" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#cta", label: "Get Started" },
+  { href: "#proof", label: "Доверие" },
+  { href: "#benefits", label: "Преимущества" },
+  { href: "#faq", label: "Вопросы" },
+  { href: "#cta", label: "Начать" },
 ];
 
 export default function Header() {

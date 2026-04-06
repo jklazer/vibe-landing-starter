@@ -19,19 +19,19 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 text-sm font-medium">
-          Launch faster with vibe coding
+          Запускайте быстрее с вайбкодингом
         </div>
 
         <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6">
-          Build Landing Pages{" "}
+          Создавайте лендинги,{" "}
           <span className="bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">
-            That Convert
+            которые конвертируют
           </span>
         </h1>
 
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-          A production-ready starter with lead capture, analytics events,
-          webhook integrations, and Telegram notifications. Ship your MVP in hours, not weeks.
+          Готовый стартер с формой заявки, аналитикой событий,
+          вебхуками и Telegram-уведомлениями. Запустите MVP за часы, а не недели.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -39,28 +39,28 @@ export default function Hero() {
             onClick={handleCTA}
             className="px-8 py-4 rounded-xl bg-brand-600 text-white font-semibold text-lg shadow-lg shadow-brand-600/25 hover:bg-brand-700 hover:shadow-brand-700/30 transition-all hover:-translate-y-0.5"
           >
-            Get Started Free
+            Начать бесплатно
           </button>
           <a
             href="#benefits"
             className="px-8 py-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold text-lg hover:border-brand-300 hover:text-brand-600 transition-all"
           >
-            Learn More
+            Узнать больше
           </a>
         </div>
 
         <div className="mt-12 flex items-center justify-center gap-8 text-sm text-gray-500">
           <span className="flex items-center gap-2">
             <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            Free forever
+            Бесплатно навсегда
           </span>
           <span className="flex items-center gap-2">
             <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            No credit card
+            Без карты
           </span>
           <span className="flex items-center gap-2">
             <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-            Deploy in 5 min
+            Деплой за 5 минут
           </span>
         </div>
       </div>

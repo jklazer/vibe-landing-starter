@@ -1,28 +1,28 @@
 # Vibe Landing Starter
 
-Production-ready landing page with lead capture, conversion analytics, webhook inbox, and Telegram notifications.
+Готовый к продакшну лендинг с формой заявки, аналитикой конверсий, webhook-приёмником и Telegram-уведомлениями.
 
-**Live demo:** [vibe-landing-starter-gold.vercel.app](https://vibe-landing-starter-gold.vercel.app)
+**Живое демо:** [vibe-landing-starter-gold.vercel.app](https://vibe-landing-starter-gold.vercel.app)
 
-**Stack:** Next.js 14 · TypeScript · Tailwind CSS · Prisma · PostgreSQL · Docker
+**Стек:** Next.js 14 · TypeScript · Tailwind CSS · Prisma · PostgreSQL · Docker
 
-## Features
+## Возможности
 
-- **5-section landing:** Hero / Proof / Benefits / FAQ / CTA
-- **Lead form:** name + contact + consent → saved to Postgres
-- **Conversion events:** `landing_view`, `cta_click`, `lead_created` tracked in DB
-- **Webhook inbox:** secure endpoint with secret + idempotency
-- **Telegram alerts:** instant notification on new leads
-- **Docker Compose:** one command to run everything
+- **5 секций лендинга:** Hero / Доверие / Преимущества / FAQ / CTA
+- **Форма заявки:** имя + контакт + согласие → сохранение в Postgres
+- **События конверсии:** `landing_view`, `cta_click`, `lead_created` — отслеживание в БД
+- **Webhook-приёмник:** защищённый эндпоинт с секретом + идемпотентность
+- **Telegram-оповещения:** мгновенное уведомление о новых лидах
+- **Docker Compose:** одна команда для запуска всего
 
-## Quick Start (local)
+## Быстрый старт (локально)
 
-### Prerequisites
+### Требования
 
 - Node.js 18+
-- PostgreSQL (or use Docker)
+- PostgreSQL (или Docker)
 
-### 1. Clone & install
+### 1. Клонировать и установить
 
 ```bash
 git clone https://github.com/jklazer/vibe-landing-starter.git
@@ -30,95 +30,95 @@ cd vibe-landing-starter
 npm install
 ```
 
-### 2. Configure environment
+### 2. Настроить окружение
 
 ```bash
 cp .env.example .env
-# Edit .env — set DATABASE_URL, TG_BOT_TOKEN, TG_CHAT_ID, WEBHOOK_SECRET
+# Отредактируйте .env — укажите DATABASE_URL, TG_BOT_TOKEN, TG_CHAT_ID, WEBHOOK_SECRET
 ```
 
-### 3. Set up database
+### 3. Настроить базу данных
 
 ```bash
-# Start Postgres (if using Docker)
+# Запустить Postgres (если через Docker)
 docker compose up db -d
 
-# Run migrations
+# Применить миграции
 npx prisma migrate dev --name init
 
-# (Optional) Seed sample data
+# (Опционально) Заполнить тестовыми данными
 npm run db:seed
 ```
 
-### 4. Run
+### 4. Запустить
 
 ```bash
 npm run dev
-# Open http://localhost:3000
+# Откройте http://localhost:3000
 ```
 
-## Docker Compose (production)
+## Docker Compose (продакшн)
 
 ```bash
 cp .env.example .env
-# Edit .env with production values
+# Укажите продакшн-значения в .env
 
 docker compose up -d --build
-# App available at http://localhost:3000
-# Migrations run automatically on container start
+# Приложение доступно на http://localhost:3000
+# Миграции применяются автоматически при старте контейнера
 ```
 
-## Database Migrations
+## Миграции базы данных
 
 ```bash
-# Create new migration (development)
+# Создать новую миграцию (разработка)
 npx prisma migrate dev --name describe_change
 
-# Apply migrations (production)
+# Применить миграции (продакшн)
 npx prisma migrate deploy
 
-# Visual database browser
+# Визуальный браузер базы данных
 npm run db:studio
 ```
 
-## Demo Script (verify in 2 min)
+## Демо-скрипт (проверка за 2 минуты)
 
 ```bash
-# Default: http://localhost:3000
+# По умолчанию: http://localhost:3000
 bash scripts/demo.sh
 
-# Custom URL
+# Свой URL
 bash scripts/demo.sh https://your-domain.com
 
-# With custom webhook secret
+# С кастомным секретом
 WEBHOOK_SECRET=my-secret bash scripts/demo.sh
 ```
 
-The script checks:
-1. Landing page loads (200)
-2. Event tracking works (201)
-3. Lead creation works (201) + triggers TG notification
-4. Webhook processes event (201)
-5. Duplicate webhook is idempotent (200)
-6. Wrong webhook secret is rejected (401)
+Скрипт проверяет:
+1. Лендинг загружается (200)
+2. Трекинг событий работает (201)
+3. Создание лида работает (201) + отправляет TG-уведомление
+4. Webhook обрабатывает событие (201)
+5. Дублирующий webhook идемпотентен (200)
+6. Неверный секрет отклоняется (401)
 
-## API Endpoints
+## API-эндпоинты
 
 ### `POST /api/leads`
 
-Create a new lead.
+Создать новый лид.
 
 ```json
 {
-  "name": "John Doe",
-  "contact": "john@example.com",
+  "name": "Иван Иванов",
+  "contact": "ivan@example.com",
   "consent": true
 }
 ```
 
 ### `POST /api/events`
 
-Track a conversion event.
+Отслеживание события конверсии.
 
 ```json
 {
@@ -127,13 +127,13 @@ Track a conversion event.
 }
 ```
 
-Types: `landing_view`, `cta_click`
+Типы: `landing_view`, `cta_click`
 
-> `lead_created` events are tracked server-side automatically when a lead is created.
+> Событие `lead_created` создаётся автоматически на сервере при создании лида.
 
 ### `POST /api/webhook`
 
-Receive external events. Requires `x-webhook-secret` header.
+Приём внешних событий. Требуется заголовок `x-webhook-secret`.
 
 ```json
 {
@@ -143,17 +143,17 @@ Receive external events. Requires `x-webhook-secret` header.
 }
 ```
 
-Duplicate `id` values return `200` instead of `201` (idempotency).
+Дублирующий `id` возвращает `200` вместо `201` (идемпотентность).
 
-## Environment Variables
+## Переменные окружения
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://postgres:postgres@localhost:5432/vibelanding` |
-| `TG_BOT_TOKEN` | Telegram Bot API token | `123456:ABC-DEF...` |
-| `TG_CHAT_ID` | Telegram chat/group ID | `-1001234567890` |
-| `WEBHOOK_SECRET` | Secret for webhook authentication | `my-super-secret` |
+| Переменная | Описание | Пример |
+|------------|----------|--------|
+| `DATABASE_URL` | Строка подключения PostgreSQL | `postgresql://postgres:postgres@localhost:5432/vibelanding` |
+| `TG_BOT_TOKEN` | Токен Telegram Bot API | `123456:ABC-DEF...` |
+| `TG_CHAT_ID` | ID чата/группы Telegram | `-1001234567890` |
+| `WEBHOOK_SECRET` | Секрет для аутентификации вебхуков | `my-super-secret` |
 
-## License
+## Лицензия
 
 MIT
