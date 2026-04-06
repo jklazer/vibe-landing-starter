@@ -23,7 +23,7 @@ Production-ready landing page with lead capture, conversion analytics, webhook i
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/YOUR_USER/vibe-landing-starter.git
+git clone https://github.com/jklazer/vibe-landing-starter.git
 cd vibe-landing-starter
 npm install
 ```
