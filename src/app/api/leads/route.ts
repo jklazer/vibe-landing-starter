@@ -38,11 +38,11 @@ export async function POST(req: NextRequest) {
 
     // Telegram notification (fire-and-forget, HTML-escaped)
     sendTelegramMessage(
-      `<b>New Lead!</b>\n\n` +
-      `<b>Name:</b> ${escapeHtml(lead.name)}\n` +
-      `<b>Contact:</b> ${escapeHtml(lead.contact)}\n` +
+      `<b>Новая заявка!</b>\n\n` +
+      `<b>Имя:</b> ${escapeHtml(lead.name)}\n` +
+      `<b>Контакт:</b> ${escapeHtml(lead.contact)}\n` +
       `<b>ID:</b> <code>${lead.id}</code>\n` +
-      `<b>Time:</b> ${lead.createdAt.toISOString()}`,
+      `<b>Время:</b> ${lead.createdAt.toISOString()}`,
     ).catch((err) => console.error("[TG] notification failed:", err));
 
     return NextResponse.json({ id: lead.id }, { status: 201 });
