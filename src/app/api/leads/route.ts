@@ -3,20 +3,31 @@ import { prisma } from "@/lib/prisma";
 import { trackEvent } from "@/lib/events";
 import { sendTelegramMessage } from "@/lib/telegram";
 
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, contact, consent } = body;
 
-    if (!name || !contact || consent !== true) {
+    if (
+      !name || typeof name !== "string" ||
+      !contact || typeof contact !== "string" ||
+      consent !== true
+    ) {
       return NextResponse.json(
         { error: "name, contact (string) and consent (true) are required" },
         { status: 400 },
       );
     }
 
+    const safeName = name.trim().slice(0, 200);
+    const safeContact = contact.trim().slice(0, 200);
+
     const lead = await prisma.lead.create({
-      data: { name, contact, consent },
+      data: { name: safeName, contact: safeContact, consent },
     });
 
     await trackEvent("lead_created", {
@@ -25,11 +36,11 @@ export async function POST(req: NextRequest) {
       contact: lead.contact,
     });
 
-    // Telegram notification (fire-and-forget)
+    // Telegram notification (fire-and-forget, HTML-escaped)
     sendTelegramMessage(
       `<b>New Lead!</b>\n\n` +
-      `<b>Name:</b> ${lead.name}\n` +
-      `<b>Contact:</b> ${lead.contact}\n` +
+      `<b>Name:</b> ${escapeHtml(lead.name)}\n` +
+      `<b>Contact:</b> ${escapeHtml(lead.contact)}\n` +
       `<b>ID:</b> <code>${lead.id}</code>\n` +
       `<b>Time:</b> ${lead.createdAt.toISOString()}`,
     ).catch((err) => console.error("[TG] notification failed:", err));

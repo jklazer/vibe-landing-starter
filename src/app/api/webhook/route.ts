@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
+import crypto from "crypto";
+
+function timingSafeEqual(a: string, b: string): boolean {
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 export async function POST(req: NextRequest) {
   try {
-    // Verify secret
+    // Verify secret (timing-safe comparison)
     const secret = req.headers.get("x-webhook-secret");
-    if (secret !== process.env.WEBHOOK_SECRET) {
+    const expected = process.env.WEBHOOK_SECRET;
+    if (!secret || !expected || !timingSafeEqual(secret, expected)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -19,27 +29,28 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Idempotency: check if already processed
-    const existing = await prisma.webhookEvent.findUnique({
-      where: { externalId: String(externalId) },
-    });
-
-    if (existing) {
-      return NextResponse.json(
-        { status: "already_processed", id: existing.id },
-        { status: 200 },
-      );
+    // Idempotency: try to create, catch unique constraint violation
+    try {
+      const event = await prisma.webhookEvent.create({
+        data: {
+          externalId: String(externalId),
+          eventType: String(eventType).slice(0, 255),
+          payload: payload ?? {},
+        },
+      });
+      return NextResponse.json({ status: "processed", id: event.id }, { status: 201 });
+    } catch (e) {
+      if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+        const existing = await prisma.webhookEvent.findUnique({
+          where: { externalId: String(externalId) },
+        });
+        return NextResponse.json(
+          { status: "already_processed", id: existing?.id },
+          { status: 200 },
+        );
+      }
+      throw e;
     }
-
-    const event = await prisma.webhookEvent.create({
-      data: {
-        externalId: String(externalId),
-        eventType,
-        payload: payload ?? {},
-      },
-    });
-
-    return NextResponse.json({ status: "processed", id: event.id }, { status: 201 });
   } catch (err) {
     console.error("[webhook] error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

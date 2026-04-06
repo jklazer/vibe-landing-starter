@@ -11,6 +11,12 @@ export default function LeadForm() {
     if (!form.consent) return;
 
     setStatus("loading");
+    // Track CTA click
+    fetch("/api/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "cta_click", payload: { section: "cta_form" } }),
+    }).catch(() => {});
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
@@ -48,6 +54,8 @@ export default function LeadForm() {
           id="name"
           type="text"
           required
+          minLength={2}
+          maxLength={200}
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           placeholder="John Doe"
@@ -63,6 +71,8 @@ export default function LeadForm() {
           id="contact"
           type="text"
           required
+          minLength={3}
+          maxLength={200}
           value={form.contact}
           onChange={(e) => setForm({ ...form, contact: e.target.value })}
           placeholder="john@example.com"

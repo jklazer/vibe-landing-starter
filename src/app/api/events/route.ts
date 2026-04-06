@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { trackEvent, type EventType } from "@/lib/events";
 
-const ALLOWED_TYPES: EventType[] = ["landing_view", "cta_click", "lead_created"];
+const ALLOWED_TYPES: EventType[] = ["landing_view", "cta_click"];
 
 export async function POST(req: NextRequest) {
   try {

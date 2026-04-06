@@ -2,6 +2,8 @@
 
 Production-ready landing page with lead capture, conversion analytics, webhook inbox, and Telegram notifications.
 
+**Live demo:** [vibe-landing-starter-gold.vercel.app](https://vibe-landing-starter-gold.vercel.app)
+
 **Stack:** Next.js 14 · TypeScript · Tailwind CSS · Prisma · PostgreSQL · Docker
 
 ## Features
@@ -63,9 +65,7 @@ cp .env.example .env
 
 docker compose up -d --build
 # App available at http://localhost:3000
-
-# Run migrations inside container
-docker compose exec app npx prisma migrate deploy
+# Migrations run automatically on container start
 ```
 
 ## Database Migrations
@@ -127,7 +127,9 @@ Track a conversion event.
 }
 ```
 
-Types: `landing_view`, `cta_click`, `lead_created`
+Types: `landing_view`, `cta_click`
+
+> `lead_created` events are tracked server-side automatically when a lead is created.
 
 ### `POST /api/webhook`
 
